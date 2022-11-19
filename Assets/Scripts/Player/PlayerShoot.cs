@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,6 +10,12 @@ public class PlayerShoot : MonoBehaviour
     Rigidbody2D _rb;
     [SerializeField] Transform _shootPoint;
     [SerializeField] Transform _centre;
+    [SerializeField] int _maxAmmo = 6;
+    private int _magazineAmmount;
+    [SerializeField] int _maxMagazine = 2;
+    private int _currentAmmo;
+    [SerializeField] float _reloadTime = 1.0f;
+    private bool _isReloading;
 
 
 
@@ -16,7 +23,9 @@ public class PlayerShoot : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _centre.position = transform.position;
-
+        _currentAmmo = _maxAmmo;
+        _magazineAmmount = _maxMagazine;
+        GameEvents.OnAmmoPickup += AddMagazine;
     }
 
     void Update()
@@ -47,11 +56,55 @@ public class PlayerShoot : MonoBehaviour
         
     }
 
+    void AddMagazine(int magazineAmmount)
+    {
+        if(_magazineAmmount >= _maxMagazine)
+        {
+            Debug.Log("Max magazine ammount added bullets to current magazine");
+            _currentAmmo = _maxAmmo;
+            return;
+        }
+
+        _magazineAmmount += magazineAmmount;
+        Debug.Log("Magazine picked up");
+    }
+
     void Shoot()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            if (_isReloading)
+            {
+                return;
+            }
+
+            if (_currentAmmo <= 0)
+            {
+                StartCoroutine(Reload());
+                return;
+            }
             Instantiate(_bullet, _shootPoint.position, _centre.rotation);
+            _currentAmmo--;
+
         }
+    }
+
+    IEnumerator Reload()
+    {
+        _isReloading = true;
+        while(_magazineAmmount <= 0)
+        {
+            Debug.Log("Out of Magazines");
+            yield return null;
+        }
+
+        Debug.Log("Reload...");
+
+        yield return new WaitForSeconds(_reloadTime);
+
+        _currentAmmo = _maxAmmo;
+        _magazineAmmount--;
+        _isReloading = false;
+
     }
 }
