@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+
     public void startGame()
     {
 
@@ -16,5 +17,10 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("Game closed");
         Application.Quit();
+    }
+
+    public void Credits()
+    {
+        SceneManager.LoadScene(1);
     }
 }
