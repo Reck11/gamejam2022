@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 288824336567025228}
   - component: {fileID: 5920346419339658523}
   - component: {fileID: 1634867556278480691}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WanderingZombie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.5, y: 2.5}
   m_EdgeRadius: 0
 --- !u!114 &288824336567025228
 MonoBehaviour:
@@ -162,9 +162,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f7f58409c286474899dd1bfccd1a4f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 10
+  Damage: 1
   Speed: 5
-  _attackRange: 1
+  AttackCooldown: 3
+  _attackRange: 3
   _detectionRange: 5
   _maxHealthPoints: 2
   _wanderRange: 10
