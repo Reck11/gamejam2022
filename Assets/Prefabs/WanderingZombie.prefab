@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8657129888717175205
+--- !u!1 &1843740425043315818
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4387553430278648070}
-  - component: {fileID: 7376352167380186633}
-  - component: {fileID: -8976673884939015150}
-  - component: {fileID: 7327385000180697987}
-  - component: {fileID: -5504720002279509804}
+  - component: {fileID: 6724364045879952585}
+  - component: {fileID: 570854167379936198}
+  - component: {fileID: 7124262814695578077}
+  - component: {fileID: 288824336567025228}
+  - component: {fileID: 5920346419339658523}
+  - component: {fileID: 1634867556278480691}
   m_Layer: 0
-  m_Name: EnemyPrototype2
+  m_Name: WanderingZombie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4387553430278648070
+--- !u!4 &6724364045879952585
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8657129888717175205}
+  m_GameObject: {fileID: 1843740425043315818}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.503781, y: 1.1509403, z: 0}
+  m_LocalPosition: {x: -1.99, y: 0.52, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7376352167380186633
+--- !u!212 &570854167379936198
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8657129888717175205}
+  m_GameObject: {fileID: 1843740425043315818}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -87,13 +88,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &-8976673884939015150
+--- !u!61 &7124262814695578077
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8657129888717175205}
+  m_GameObject: {fileID: 1843740425043315818}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -113,28 +114,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7327385000180697987
+--- !u!114 &288824336567025228
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8657129888717175205}
+  m_GameObject: {fileID: 1843740425043315818}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32db2441b769e1f48b5fb7d0b352b82a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toleranceDistance: 0
+  toleranceDistance: 0.1
   pathfindingUpdateDistance: 0.5
-  _timer: 0
---- !u!195 &-5504720002279509804
+--- !u!195 &5920346419339658523
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8657129888717175205}
+  m_GameObject: {fileID: 1843740425043315818}
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1.28
@@ -144,9 +144,29 @@ NavMeshAgent:
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2.56
   m_BaseOffset: 1.28
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1634867556278480691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843740425043315818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f7f58409c286474899dd1bfccd1a4f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 10
+  Speed: 5
+  _attackRange: 1
+  _detectionRange: 5
+  _maxHealthPoints: 2
+  _wanderRange: 10
+  _minWaitTime: 2
+  _maxWaitTime: 5
