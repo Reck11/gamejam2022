@@ -5,7 +5,17 @@ using UnityEngine.AI;
 
 public class Pathfinding : MonoBehaviour {
 
-    public Transform target;
+    #region Editor-exposed
+    public float Speed {
+        get {
+            return _agent.speed;
+        }
+        set { 
+            _agent.speed = value;
+        }
+    }
+    public Vector2 Target { get; set; }
+    #endregion
     private NavMeshAgent _agent;
     void Start() {
         _agent = GetComponent<NavMeshAgent>();
@@ -14,7 +24,7 @@ public class Pathfinding : MonoBehaviour {
     }
 
     private void CalculatePath() {
-        _agent.SetDestination(target.position);
+        _agent.SetDestination(Target);
     }
 
     void Update() {
