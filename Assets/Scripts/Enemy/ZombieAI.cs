@@ -1,22 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using static Enums;
 
 public class ZombieAI : MonoBehaviour, IEnemy {
 
     #region Editor-exposed
     public float Damage;
-    public MovementType MovementType;
+    public float Speed;
     [SerializeField]
     private float _attackRange;
     [SerializeField]
+    private float _wanderRange;
+    [SerializeField]
     private float _detectionRange;
     [SerializeField]
-    private float _healthPoints;
+    private float _minWaitTime;
+    [SerializeField]
+    private float _maxWaitTime;
+    [SerializeField]
+    private float _maxHealthPoints;
     #endregion
     #region Fields
+    private Vector2 _wanderPoint;
     private float _health;
+    private bool _shouldWander;
     private GameObject _player;
     private Pathfinding _pathfinding;
     private State _state;
@@ -26,56 +35,62 @@ public class ZombieAI : MonoBehaviour, IEnemy {
 
     void Awake() {
         _state = State.Idle;
-        _health = _healthPoints;
+        _health = _maxHealthPoints;
         _player = GameObject.FindGameObjectWithTag(Tags.PLAYER);
         _pathfinding = GetComponent<Pathfinding>();
+        _shouldWander = true;
     }
 
     void Update() {
         UpdateState();
         if (_state == State.Idle)
-            Idle();
+            Wander();
         if (_state == State.Attack)
             Attack();
     }
 
     // update state to determine what to do
     private void UpdateState() {
+        if (_player == null)
+            return;
+
         _distanceToPlayer = Vector2.Distance(transform.position, _player.transform.position);
         if (_distanceToPlayer <= _detectionRange) {
             _state = State.Attack;
         }
         else _state = State.Idle;
     }
-    // different behaviours for different movement types
-    private void Idle() {
-        switch (MovementType) {
-            case MovementType.Patrolling:
-                Patrol();
-                break;
-            case MovementType.Wandering:
-                Wander();
-                break;
-            default:
-                Debug.LogError("Invalid enemy type for " + gameObject.name);
-                break;
+
+    // slowly pace around general area, randomly picking targets
+    private void Wander() {
+        _pathfinding.SetSpeed(Speed / 2);
+        if (!_pathfinding.hasTarget && _shouldWander) {
+            Vector2 randomDirection = Random.insideUnitCircle * _wanderRange;
+            randomDirection += (Vector2)transform.position;
+            NavMeshHit hit;
+            NavMesh.SamplePosition(randomDirection, out hit, _wanderRange, 1);
+            Vector2 finalPosition = hit.position;
+            Move(finalPosition);
+            StartCoroutine(Waiter());
         }
     }
 
-    private void Wander() {
-
+    private IEnumerator Waiter() {
+        _shouldWander = false;
+        Debug.Log(_shouldWander);
+        yield return new WaitForSeconds(Random.Range(_minWaitTime, _maxWaitTime));
+        _shouldWander = true;
+        Debug.Log(_shouldWander);
     }
 
-    private void Patrol() { 
-        
-    }
     // move by changing pathfinding script's target
     private void Move(Vector2 target) {
-        _pathfinding.Target = target;
+        _pathfinding.target = target;
     }
 
     private void Attack() {
-        
+        _pathfinding.SetSpeed(Speed);
+        _pathfinding.target = _player.transform.position;
     }
     // hit player
     private void Hit() {
