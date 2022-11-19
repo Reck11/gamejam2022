@@ -58,6 +58,13 @@ public class PlayerShoot : MonoBehaviour
 
     void AddMagazine(int magazineAmmount)
     {
+        if(_magazineAmmount >= _maxMagazine)
+        {
+            Debug.Log("Max magazine ammount added bullets to current magazine");
+            _currentAmmo = _maxAmmo;
+            return;
+        }
+
         _magazineAmmount += magazineAmmount;
         Debug.Log("Magazine picked up");
     }
