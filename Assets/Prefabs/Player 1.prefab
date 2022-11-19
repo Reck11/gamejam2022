@@ -228,9 +228,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95ed39f7cb66e04088e21f98c414bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bullet: {fileID: 561026788817224612, guid: d40c17070532e334ab32fcf40fc65ed7, type: 3}
+  _bullet: {fileID: 561026788817224612, guid: bb385571cbf49a34ba15fcfb1c8f9be3, type: 3}
   _shootPoint: {fileID: 5335859951874833652}
   _centre: {fileID: 5335859952112702629}
+  _maxAmmo: 6
+  _maxMagazine: 2
+  _reloadTime: 1
 --- !u!114 &8212221094320795962
 MonoBehaviour:
   m_ObjectHideFlags: 0
