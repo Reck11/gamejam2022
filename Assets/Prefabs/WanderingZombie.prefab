@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 288824336567025228}
   - component: {fileID: 5920346419339658523}
   - component: {fileID: 1634867556278480691}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WanderingZombie
   m_TagString: Enemy
   m_Icon: {fileID: 0}

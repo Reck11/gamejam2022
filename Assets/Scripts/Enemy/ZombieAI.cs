@@ -63,6 +63,6 @@ public class ZombieAI : MonoBehaviour, IEnemy {
             Die();
     }
     protected void Die() {
-
+        Destroy(gameObject);
     }
 }
