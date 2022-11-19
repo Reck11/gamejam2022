@@ -70,17 +70,23 @@ public class ZombieAI : MonoBehaviour, IEnemy {
             NavMeshHit hit;
             NavMesh.SamplePosition(randomDirection, out hit, _wanderRange, 1);
             Vector2 finalPosition = hit.position;
+            if (Vector2.Distance(finalPosition, transform.position) < 1.0f)
+                return;
             Move(finalPosition);
+        }
+        else if (_pathfinding.hasTarget && _pathfinding.GetDistance() < 0.5f) {
             StartCoroutine(Waiter());
         }
     }
 
+    //wait between minWaitTime and maxWaitTime before moving again
     private IEnumerator Waiter() {
+        if (!_shouldWander) // if moving is already inhibited, there is no need to start the couroutine
+            yield break;
+
         _shouldWander = false;
-        Debug.Log(_shouldWander);
         yield return new WaitForSeconds(Random.Range(_minWaitTime, _maxWaitTime));
         _shouldWander = true;
-        Debug.Log(_shouldWander);
     }
 
     // move by changing pathfinding script's target

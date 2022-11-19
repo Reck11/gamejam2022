@@ -32,7 +32,7 @@ public class Pathfinding : MonoBehaviour {
         _agent.updateRotation = false;
         _agent.updateUpAxis = false;
         _timer = 0;
-        hasTarget = false;
+        _target = transform.position;
     }
 
     private void CalculatePath() {
@@ -60,6 +60,10 @@ public class Pathfinding : MonoBehaviour {
             _agent.isStopped = false;
             hasTarget = true;
         }
+    }
+
+    public float GetDistance() {
+        return Vector2.Distance(_target, transform.position);
     }
 
     #region getters/setters
