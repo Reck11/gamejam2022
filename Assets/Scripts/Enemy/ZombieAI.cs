@@ -9,6 +9,7 @@ public class ZombieAI : MonoBehaviour, IEnemy {
     #region Editor-exposed
     public float Damage;
     public float Speed;
+    public float AttackCooldown;
     [SerializeField]
     protected float _attackRange;
     [SerializeField]
@@ -22,6 +23,7 @@ public class ZombieAI : MonoBehaviour, IEnemy {
     protected Pathfinding _pathfinding;
     protected State _state;
     protected float _distanceToPlayer;
+    protected float _attackTimer;
 
     #endregion
 
@@ -30,10 +32,13 @@ public class ZombieAI : MonoBehaviour, IEnemy {
         _health = _maxHealthPoints;
         _player = GameObject.FindGameObjectWithTag(Tags.PLAYER);
         _pathfinding = GetComponent<Pathfinding>();
+        _attackTimer = AttackCooldown;
     }
 
     // update state to determine what to do
     protected void UpdateState() {
+        _attackTimer += Time.deltaTime;
+
         if (_player == null)
             return;
 
@@ -52,10 +57,17 @@ public class ZombieAI : MonoBehaviour, IEnemy {
     protected void Attack() {
         _pathfinding.SetSpeed(Speed);
         _pathfinding.target = _player.transform.position;
+        if (_distanceToPlayer < _attackRange) {
+            _pathfinding.target = transform.position;
+            Hit();
+        }
     }
     // hit player
     protected void Hit() {
-
+        if (_attackTimer > AttackCooldown) {
+            _player.GetComponent<PlayerHealth>().ReceiveDamage(Damage);
+            _attackTimer = 0;
+        }
     }
     public void ReceiveDamage(float damage) {
         _health -= damage;

@@ -80,6 +80,7 @@ GameObject:
   - component: {fileID: 5335859953008517878}
   - component: {fileID: 8212221094320795962}
   - component: {fileID: 1641413201632589587}
+  - component: {fileID: -2573882082924197948}
   m_Layer: 0
   m_Name: PlayerWithHealth
   m_TagString: Player
@@ -96,7 +97,7 @@ Transform:
   m_GameObject: {fileID: 5335859953008517879}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.1, y: -0.67, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5335859952112702629}
@@ -214,7 +215,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.5, y: 2.5}
   m_EdgeRadius: 0
 --- !u!114 &5335859953008517878
 MonoBehaviour:
@@ -274,6 +275,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-2573882082924197948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5335859953008517879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb0963211d71da9488997be01a67fcef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  _scriptsToDisable:
+  - {fileID: 8212221094320795962}
+  - {fileID: 5335859953008517878}
+  - {fileID: 5335859953008517876}
 --- !u!1 &8112645585501268772
 GameObject:
   m_ObjectHideFlags: 0
