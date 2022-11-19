@@ -23,20 +23,20 @@ public class PlayerShoot : MonoBehaviour
     {
 
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetAxisRaw(Axis.VERTICAL) == 1)
         {
             _centre.rotation = Quaternion.Euler(0, 0, 90);
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetAxisRaw(Axis.VERTICAL) == -1)
         {
             _centre.rotation = Quaternion.Euler(0, 0, 270);
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetAxisRaw(Axis.HORIZONTAL) == 1)
         {
             _centre.rotation = Quaternion.Euler(0, 0, 0);
 
         }
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetAxisRaw(Axis.HORIZONTAL) == -1)
         {
             _centre.rotation = Quaternion.Euler(0, 0, 180);
 
