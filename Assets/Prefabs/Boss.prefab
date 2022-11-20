@@ -83,7 +83,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.56, y: 2.56}
+  m_Size: {x: 0.54, y: 2.0972667}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -107,7 +107,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.54, y: 2.0972667}
-    newSize: {x: 2.56, y: 2.56}
+    newSize: {x: 0.54, y: 2.0972667}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -161,7 +161,7 @@ Animator:
   m_GameObject: {fileID: 4348822924064493091}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 21869621adf6dfc41ac52c324debe7a4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 81bcbb1ad66c2aa4cb495f7d3b813243, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -180,14 +180,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4348822924064493091}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1849220b52d39274eb523e31485f2517, type: 3}
+  m_Script: {fileID: 11500000, guid: ec8fa7c6e1d8c3248bfbed79422794ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 1
+  Damage: 100
   Speed: 5
-  AttackCooldown: 1
-  _attackRange: 5
-  _detectionRange: 5
-  _maxHealthPoints: 999
-  _wanderRange: 1
+  AttackCooldown: 0.5
+  _attackRange: 3
+  _detectionRange: 10
+  _maxHealthPoints: 1000
+  _wanderRange: 10
   _waitTime: 1

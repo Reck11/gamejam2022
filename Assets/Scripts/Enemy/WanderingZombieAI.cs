@@ -23,11 +23,9 @@ public class WanderingZombieAI : ZombieAI {
 
     #endregion
 
-    void Awake() {
-        _state = State.Idle;
+    new void Awake() {
+        base.Awake();
         _health = _maxHealthPoints;
-        _player = GameObject.FindGameObjectWithTag(Tags.PLAYER);
-        _pathfinding = GetComponent<Pathfinding>();
         _shouldWander = true;
         _animator = GetComponent<Animator>();
         _agent = _pathfinding.GetComponent<NavMeshAgent>();

@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static System.Collections.Specialized.BitVector32;
 
 public class Numbers : MonoBehaviour
 {
     [SerializeField] int nextBtn;
     [SerializeField] GameObject panel;
     [SerializeField] GameObject[] objects;
+    [SerializeField]
+    private GameObject station;
 
     private void Start()
     {
@@ -40,19 +43,8 @@ public class Numbers : MonoBehaviour
 
         if (btn == 9 && btn == nextBtn)
         {
-            Debug.Log("Passed");
+            station.GetComponent<Task>().EndTask();
             nextBtn = 0;
-            BtnOrderPanClose();
         }
-    }
-
-    void BtnOrderPanClose()
-    {
-        panel.SetActive(false);
-    }
-
-    void BtnOrderPanOpen()
-    {
-        panel.SetActive(true);
     }
 }
