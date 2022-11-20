@@ -10,5 +10,6 @@ public class Door : MonoBehaviour {
     public void OpenDoor() {
         leftDoor.transform.Translate(new Vector2 (leftDoor.transform.position.x - openAmount, leftDoor.transform.position.y));
         rightDoor.transform.Translate(new Vector2(leftDoor.transform.position.x + openAmount, leftDoor.transform.position.y));
+        GetComponent<Collider2D>().enabled = false;
     }
 }
