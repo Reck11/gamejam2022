@@ -10,6 +10,7 @@ public class Locker : MonoBehaviour {
     private GameObject _player;
     private List<MonoBehaviour> _components = new List<MonoBehaviour>();
     private BoxCollider2D _boxCollider;
+    private Animator _animator;
 
     void Start() {
         _player = GameObject.FindGameObjectWithTag(Tags.PLAYER);
@@ -17,6 +18,7 @@ public class Locker : MonoBehaviour {
         _components.Add(_player.GetComponent<PlayerShoot>());
         _components.Add(_player.GetComponent<PlayerMeele>());
         _boxCollider = GetComponent<BoxCollider2D>();
+        _animator = GetComponent<Animator>();
     }
 
     public void EnterLocker() {
@@ -30,6 +32,7 @@ public class Locker : MonoBehaviour {
         _player.transform.position = transform.position;
         _player.GetComponent<SpriteRenderer>().enabled = false;
         _boxCollider.enabled = false;
+        _animator.SetTrigger("Shuffle");
     }
     public void ExitLocker() {
         if (!_playerIsInLocker || !_canInteract)
@@ -42,6 +45,7 @@ public class Locker : MonoBehaviour {
         _player.transform.position = new Vector2(transform.position.x, transform.position.y - 1.5f);
         _player.GetComponent<SpriteRenderer>().enabled = true;
         _boxCollider.enabled = true;
+        _animator.SetTrigger("Shuffle");
     }
     private IEnumerator LockerWaiter() {
         if (!_canInteract)
