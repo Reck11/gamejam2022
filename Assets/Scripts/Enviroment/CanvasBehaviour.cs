@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class CanvasBehaviour : MonoBehaviour
 {
+    [SerializeField]
+    private int _disposeTime;
     private int _packageCount;
-    // Start is called before the first frame update
     void Start()
     {
         GameEvents.OnPackageEnter += Count;
    
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(_packageCount >= 7)
         {
             GameEvents.OnPackageEnter -= Count; 
-            Destroy(gameObject);
+            Destroy(gameObject, _disposeTime);
         }
     }
 
