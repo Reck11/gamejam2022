@@ -10,6 +10,7 @@ TagManager:
   - DropBoxWide
   - DropBoxTall
   - DropBoxSquare
+  - Boss
   layers:
   - Default
   - TransparentFX

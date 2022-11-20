@@ -71,8 +71,9 @@ public class ZombieAI : MonoBehaviour, IEnemy {
             _attackTimer = 0;
         }
     }
-    public void ReceiveDamage(float damage) {
+    public virtual void ReceiveDamage(float damage) {
         _health -= damage;
+        Debug.Log("Damage Zomb");
         if (_health <= 0)
             Die();
     }
