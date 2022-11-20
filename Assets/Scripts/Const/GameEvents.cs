@@ -8,6 +8,7 @@ public static class GameEvents
 {
     public static event Action<int> OnAmmoPickup;
     public static event Action<bool> OnPlayerEnter;
+    public static event Action<bool> OnPackageEnter;
 
     public static void AmmoPickup(int magazineAmmount)
     {
@@ -16,7 +17,11 @@ public static class GameEvents
 
     public static void PlayerEnter(bool isInside)
     {
-        Debug.Log("Event");
         OnPlayerEnter?.Invoke(isInside);
+    }
+
+    public static void PackageEnter(bool isInside)
+    {
+        OnPackageEnter?.Invoke(isInside);
     }
 }

@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - DropBox
+  - DropBoxWide
+  - DropBoxTall
+  - DropBoxSquare
   layers:
   - Default
   - TransparentFX

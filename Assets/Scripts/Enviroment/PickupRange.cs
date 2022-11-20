@@ -6,16 +6,15 @@ public class PickupRange : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag(Tags.PLAYER))
         {
             GameEvents.PlayerEnter(true);
-            Debug.Log("Player entered");
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag(Tags.PLAYER))
         {
             GameEvents.PlayerEnter(false);
         }
