@@ -13,7 +13,6 @@ public class InteractableObject : MonoBehaviour {
     }
 
     private void OnTriggerStay2D(Collider2D collision) {
-        Debug.Log(collision.gameObject.CompareTag("Player") + " " + Input.GetKeyDown(key));
         if (collision.gameObject.CompareTag("Player") && Input.GetKeyDown(key)) {
             interactAction.Invoke();
         }
