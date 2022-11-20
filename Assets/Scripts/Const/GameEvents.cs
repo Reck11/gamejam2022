@@ -9,6 +9,7 @@ public static class GameEvents
     public static event Action<int> OnAmmoPickup;
     public static event Action<bool> OnPlayerEnter;
     public static event Action<bool> OnPackageEnter;
+    public static event Action<bool> OnPlayerVisibility;
 
     public static void AmmoPickup(int magazineAmmount)
     {
@@ -23,5 +24,9 @@ public static class GameEvents
     public static void PackageEnter(bool isInside)
     {
         OnPackageEnter?.Invoke(isInside);
+    }
+    
+    public static void PlayerVisibility(bool isVisible) {
+        OnPlayerVisibility?.Invoke(isVisible);
     }
 }

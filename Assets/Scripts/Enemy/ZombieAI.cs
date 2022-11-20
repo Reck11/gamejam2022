@@ -24,15 +24,17 @@ public class ZombieAI : MonoBehaviour, IEnemy {
     protected State _state;
     protected float _distanceToPlayer;
     protected float _attackTimer;
+    protected bool _playerIsVisible = true;
 
     #endregion
 
-    void Awake() {
+    protected void Awake() {
         _state = State.Idle;
         _health = _maxHealthPoints;
         _player = GameObject.FindGameObjectWithTag(Tags.PLAYER);
         _pathfinding = GetComponent<Pathfinding>();
         _attackTimer = AttackCooldown;
+        GameEvents.OnPlayerVisibility += PlayerIsVisible;
     }
 
     // update state to determine what to do
@@ -43,7 +45,7 @@ public class ZombieAI : MonoBehaviour, IEnemy {
             return;
 
         _distanceToPlayer = Vector2.Distance(transform.position, _player.transform.position);
-        if (_distanceToPlayer <= _detectionRange) {
+        if (_distanceToPlayer <= _detectionRange && _playerIsVisible) {
             _state = State.Attack;
         }
         else _state = State.Idle;
@@ -76,5 +78,8 @@ public class ZombieAI : MonoBehaviour, IEnemy {
     }
     protected void Die() {
         Destroy(gameObject);
+    }
+    protected void PlayerIsVisible(bool value) {
+        _playerIsVisible = value;
     }
 }
