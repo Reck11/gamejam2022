@@ -8,6 +8,8 @@ public class PlayerHealth : MonoBehaviour {
     private float _health;
     [SerializeField]
     private List<MonoBehaviour> _scriptsToDisable;
+    [SerializeField]
+    private GameObject _gameManager;
 
     void Start() {
         _health = maxHealth;
