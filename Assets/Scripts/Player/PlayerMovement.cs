@@ -5,27 +5,81 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] public float _speed = 5f;
+    [SerializeField] public float _speed = 250f;
     [SerializeField] public Rigidbody2D _rb;
-    Vector2 _movement;
+    private Vector2 direction;
 
+   public Animator animator;
 
+    public float x, y;
 
-    // Start is called before the first frame update
-    void Start()
+    private bool isWalking;
+
+    private void Start()
     {
-        
+        _rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        _movement.x = Input.GetAxisRaw(Axis.HORIZONTAL);
-        _movement.y = Input.GetAxisRaw(Axis.VERTICAL);
+        x = Input.GetAxisRaw(Axis.HORIZONTAL);
+        y = Input.GetAxisRaw(Axis.VERTICAL);
+
+        if (x != 0 || y != 0)
+        {
+            animator.SetFloat("Horizontal", x);
+            animator.SetFloat("Vertical", y);
+            if (!isWalking)
+            {
+                isWalking = true;
+                animator.SetBool("isMoving", isWalking);
+            }
+        }
+        else
+        {
+            if (isWalking)
+            {
+                isWalking = false;
+                animator.SetBool("isMoving", isWalking);
+                StopMoving();
+            }
+        }
+        direction = new Vector2(x, y).normalized;
+    }
+
+    void StopMoving()
+    {
+        _rb.velocity = Vector2.zero; 
     }
 
     void FixedUpdate()
     {
-       _rb.MovePosition(_rb.position + _movement * _speed * Time.fixedDeltaTime);
+        _rb.velocity = direction * _speed * Time.deltaTime; 
     }
+
+
+
+
+    /* Vector2 _movement;
+
+
+
+     // Start is called before the first frame update
+     void Start()
+     {
+
+     }
+
+     // Update is called once per frame
+     void Update()
+     {
+         _movement.x = Input.GetAxisRaw(Axis.HORIZONTAL);
+         _movement.y = Input.GetAxisRaw(Axis.VERTICAL);
+     }
+
+     void FixedUpdate()
+     {
+        _rb.MovePosition(_rb.position + _movement * _speed * Time.fixedDeltaTime);
+     }*/
 }
