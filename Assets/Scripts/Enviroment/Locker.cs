@@ -29,6 +29,7 @@ public class Locker : MonoBehaviour {
         foreach (MonoBehaviour comp in _components) {
             comp.enabled = false;
         }
+        GameEvents.PlayerVisibility(false);
         _player.transform.position = transform.position;
         _player.GetComponent<SpriteRenderer>().enabled = false;
         _boxCollider.enabled = false;
@@ -42,6 +43,7 @@ public class Locker : MonoBehaviour {
         foreach (MonoBehaviour comp in _components) {
             comp.enabled = true;
         }
+        GameEvents.PlayerVisibility(true);
         _player.transform.position = new Vector2(transform.position.x, transform.position.y - 1.5f);
         _player.GetComponent<SpriteRenderer>().enabled = true;
         _boxCollider.enabled = true;
