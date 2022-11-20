@@ -6,6 +6,8 @@ public class CanvasBehaviour : MonoBehaviour
 {
     [SerializeField]
     private int _disposeTime;
+    [SerializeField]
+    private GameObject station;
     private int _packageCount;
     void Start()
     {
@@ -17,7 +19,8 @@ public class CanvasBehaviour : MonoBehaviour
     {
         if(_packageCount >= 7)
         {
-            GameEvents.OnPackageEnter -= Count; 
+            GameEvents.OnPackageEnter -= Count;
+            station.GetComponent<Task>().EndTask();
             Destroy(gameObject, _disposeTime);
         }
     }

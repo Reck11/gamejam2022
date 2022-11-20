@@ -32,8 +32,8 @@ public class Bullet : MonoBehaviour
         {
             var IEnemy = collision.gameObject.GetComponent<IEnemy>();
             IEnemy.ReceiveDamage(_damage);
-            Destroy(gameObject);
         }
+        Destroy(gameObject);
     }
 
 }
