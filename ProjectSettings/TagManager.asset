@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - Interectable
+  - DropBox
+  - DropBoxWide
+  - DropBoxTall
+  - DropBoxSquare
   layers:
   - Default
   - TransparentFX

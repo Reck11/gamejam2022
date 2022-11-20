@@ -6,15 +6,16 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-    [SerializeField] GameObject _bullet;
-    Rigidbody2D _rb;
-    [SerializeField] Transform _shootPoint;
-    [SerializeField] Transform _centre;
-    [SerializeField] int _maxAmmo = 6;
+    [SerializeField] private GameObject _bullet;
+    [SerializeField] private Transform _shootPoint;
+    [SerializeField] private Transform _centre;
+    [SerializeField] private int _maxAmmo = 6;
+    [SerializeField] private float _reloadTime = 1.0f;
+    [SerializeField] private int _maxMagazine = 2;
+    [SerializeField] private int _damage;
+    private Rigidbody2D _rb;
     private int _magazineAmmount;
-    [SerializeField] int _maxMagazine = 2;
     private int _currentAmmo;
-    [SerializeField] float _reloadTime = 1.0f;
     private bool _isReloading;
 
 
@@ -83,7 +84,8 @@ public class PlayerShoot : MonoBehaviour
                 StartCoroutine(Reload());
                 return;
             }
-            Instantiate(_bullet, _shootPoint.position, _centre.rotation);
+            var shotBullet = Instantiate(_bullet, _shootPoint.position, _centre.rotation);
+            shotBullet.GetComponent<Bullet>().SetDamage(_damage);
             _currentAmmo--;
 
         }

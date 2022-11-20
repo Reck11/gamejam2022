@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerMeele : MonoBehaviour
 {
-    [SerializeField] Animator _animator;
-    [SerializeField] Transform _attackPoint;
-    [SerializeField] float _attackRange = 0.5f;
-    [SerializeField] LayerMask _enemyLayer;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private Transform _attackPoint;
+    [SerializeField] private float _attackRange = 0.5f;
+    [SerializeField] private LayerMask _enemyLayer;
+    [SerializeField] private float _damage;
 
     // Update is called once per frame
     void Update()
@@ -25,7 +26,10 @@ public class PlayerMeele : MonoBehaviour
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _enemyLayer);
 
         foreach(Collider2D enemy in hitEnemies){
-            Debug.Log("Enemy Hit");
+            var _iEnemy = enemy.gameObject.GetComponent<IEnemy>();
+            if (_iEnemy != null) {
+                _iEnemy.ReceiveDamage(_damage);
+            }
         }
     }
 
