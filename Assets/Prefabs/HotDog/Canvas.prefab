@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 0.41960785}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -164,6 +164,7 @@ GameObject:
   - component: {fileID: 2520473911281896493}
   - component: {fileID: 2520473911281896498}
   - component: {fileID: 2520473911281896499}
+  - component: {fileID: 1837110214}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -254,6 +255,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1837110214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2520473911281896496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 374749fc2edd0454195f7f0cb836fe6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2520473912059407095
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,11 +318,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf4c18f582a8fd5439d192c84360a1cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hotDogPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  countMax: 0.5
+  winDistance: 0.5
+  sausage: {fileID: 2520473912556573257}
+  bun: {fileID: 2520473911074589145}
+  station: {fileID: 0}
 --- !u!1 &2520473912556573257
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,12 +333,12 @@ GameObject:
   - component: {fileID: 2520473912556573256}
   - component: {fileID: 2520473912556573255}
   - component: {fileID: 2520473912556573252}
-  - component: {fileID: 2520473912556573253}
   - component: {fileID: 2520473912556573258}
   - component: {fileID: 2520473912556573259}
+  - component: {fileID: 1432943605}
   m_Layer: 5
   m_Name: sausage
-  m_TagString: Untagged
+  m_TagString: Sausage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -348,7 +360,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 40.798}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14.900005, y: -15.000004}
+  m_AnchoredPosition: {x: 96.7, y: -24.3}
   m_SizeDelta: {x: 200, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2520473912556573255
@@ -389,18 +401,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2520473912556573253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2520473912556573257}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 374749fc2edd0454195f7f0cb836fe6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &2520473912556573258
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -448,3 +448,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &1432943605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2520473912556573257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 5
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: HotDog, Assembly-CSharp
+          m_MethodName: DragHandler
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2

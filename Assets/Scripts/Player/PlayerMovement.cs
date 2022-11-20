@@ -9,31 +9,31 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public Rigidbody2D _rb;
     private Vector2 direction;
 
-   public Animator animator;
+    private Animator _animator;
 
-    public float x, y;
+    private float _x, _y;
 
     private bool isWalking;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        x = Input.GetAxisRaw(Axis.HORIZONTAL);
-        y = Input.GetAxisRaw(Axis.VERTICAL);
+        _x = Input.GetAxisRaw(Axis.HORIZONTAL);
+        _y = Input.GetAxisRaw(Axis.VERTICAL);
 
-        if (x != 0 || y != 0)
+        if (_x != 0 || _y != 0)
         {
-            animator.SetFloat("Horizontal", x);
-            animator.SetFloat("Vertical", y);
+            _animator.SetFloat("Horizontal", _x);
+            _animator.SetFloat("Vertical", _y);
             if (!isWalking)
             {
                 isWalking = true;
-                animator.SetBool("isMoving", isWalking);
+                _animator.SetBool("isMoving", isWalking);
             }
         }
         else
@@ -41,11 +41,11 @@ public class PlayerMovement : MonoBehaviour
             if (isWalking)
             {
                 isWalking = false;
-                animator.SetBool("isMoving", isWalking);
+                _animator.SetBool("isMoving", isWalking);
                 StopMoving();
             }
         }
-        direction = new Vector2(x, y).normalized;
+        direction = new Vector2(_x, _y).normalized;
     }
 
     void StopMoving()
