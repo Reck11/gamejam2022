@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 24d10a13134e3a747a956179058aebfc
+guid: f328693151505a34f8e470d0da565983
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 1500
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -117,190 +117,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tilesetitems_0
+      name: sciany2_0
       rect:
         serializedVersion: 2
-        x: 82
-        y: 679
-        width: 242
-        height: 139
+        x: 379
+        y: 648
+        width: 195
+        height: 1506
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46956e5e3c2e0c0408d9915b43f40fc8
-      internalID: 1761153371
+      spriteID: 9d7c478f17da56042be10add14b2f1e0
+      internalID: -1033223521
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tilesetitems_1
+      name: sciany2_1
       rect:
         serializedVersion: 2
-        x: 422
-        y: 680
-        width: 139
-        height: 138
+        x: 1132
+        y: 1684
+        width: 1504
+        height: 199
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e53b3c32887b014bbbd13e2170ffeaa
-      internalID: 591930000
+      spriteID: 739ab23fde102db43a794a90c5d8ce81
+      internalID: -825395787
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tilesetitems_2
+      name: sciany2_2
       rect:
         serializedVersion: 2
-        x: 658
-        y: 700
-        width: 84
-        height: 111
+        x: 3218
+        y: 424
+        width: 569
+        height: 1157
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6b6c369b612b1f4380058943149f0e4
-      internalID: 1308539480
+      spriteID: 89cd49daedf4c704a80f9f968eb6429a
+      internalID: 692045756
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tilesetitems_3
+      name: sciany2_3
       rect:
         serializedVersion: 2
-        x: 93
-        y: 391
-        width: 100
-        height: 242
+        x: 4161
+        y: 879
+        width: 186
+        height: 194
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 420eb2bbd48fa6e4781505f113b9e406
-      internalID: 1682989803
+      spriteID: 8c4f17c7c6e2ed241814aad00207bb1a
+      internalID: -1168398383
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tilesetitems_4
+      name: sciany2_4
       rect:
         serializedVersion: 2
-        x: 279
-        y: 412
-        width: 142
-        height: 208
+        x: 2873
+        y: 53
+        width: 1507
+        height: 201
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e18ae5f9607748448df2a7cca73eb61
-      internalID: -1572927676
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tilesetitems_5
-      rect:
-        serializedVersion: 2
-        x: 498
-        y: 466
-        width: 218
-        height: 161
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 004549f1af4eddf4ba2de450c23af027
-      internalID: 92455145
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tilesetitems_6
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 140
-        width: 350
-        height: 169
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cda78e4a075c9214ab72925ace8cb0dc
-      internalID: -2002063886
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tilesetitems_7
-      rect:
-        serializedVersion: 2
-        x: 505
-        y: 285
-        width: 86
-        height: 164
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1371946f8afb23540963f44526f261b4
-      internalID: -1747012177
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tilesetitems_8
-      rect:
-        serializedVersion: 2
-        x: 254
-        y: 61
-        width: 61
-        height: 129
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b1844d23b4c4529438a0884e9f91f28e
-      internalID: -1535420638
+      spriteID: 2a71259290db2034da52e496c82a943c
+      internalID: 351505918
       vertices: []
       indices: 
       edges: []
@@ -316,15 +232,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      tilesetitems_4: -1572927676
-      tilesetitems_7: -1747012177
-      tilesetitems_0: 1761153371
-      tilesetitems_8: -1535420638
-      tilesetitems_3: 1682989803
-      tilesetitems_2: 1308539480
-      tilesetitems_1: 591930000
-      tilesetitems_5: 92455145
-      tilesetitems_6: -2002063886
+      sciany2_3: -1168398383
+      sciany2_4: 351505918
+      sciany2_1: -825395787
+      sciany2_2: 692045756
+      sciany2_0: -1033223521
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
