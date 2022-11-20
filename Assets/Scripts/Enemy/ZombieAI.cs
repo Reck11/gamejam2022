@@ -1,92 +1,80 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using static Enums;
 
 public class ZombieAI : MonoBehaviour, IEnemy {
 
     #region Editor-exposed
     public float Damage;
-    public MovementType MovementType;
+    public float Speed;
+    public float AttackCooldown;
     [SerializeField]
-    private float _attackRange;
+    protected float _attackRange;
     [SerializeField]
-    private float _detectionRange;
+    protected float _detectionRange;
     [SerializeField]
-    private float _healthPoints;
+    protected float _maxHealthPoints;
     #endregion
     #region Fields
-    private float _health;
-    private GameObject _player;
-    private Pathfinding _pathfinding;
-    private State _state;
-    private float _distanceToPlayer;
+    protected float _health;
+    protected GameObject _player;
+    protected Pathfinding _pathfinding;
+    protected State _state;
+    protected float _distanceToPlayer;
+    protected float _attackTimer;
 
     #endregion
 
     void Awake() {
         _state = State.Idle;
-        _health = _healthPoints;
+        _health = _maxHealthPoints;
         _player = GameObject.FindGameObjectWithTag(Tags.PLAYER);
         _pathfinding = GetComponent<Pathfinding>();
-    }
-
-    void Update() {
-        UpdateState();
-        if (_state == State.Idle)
-            Idle();
-        if (_state == State.Attack)
-            Attack();
+        _attackTimer = AttackCooldown;
     }
 
     // update state to determine what to do
-    private void UpdateState() {
+    protected void UpdateState() {
+        _attackTimer += Time.deltaTime;
+
+        if (_player == null)
+            return;
+
         _distanceToPlayer = Vector2.Distance(transform.position, _player.transform.position);
         if (_distanceToPlayer <= _detectionRange) {
             _state = State.Attack;
         }
         else _state = State.Idle;
     }
-    // different behaviours for different movement types
-    private void Idle() {
-        switch (MovementType) {
-            case MovementType.Patrolling:
-                Patrol();
-                break;
-            case MovementType.Wandering:
-                Wander();
-                break;
-            default:
-                Debug.LogError("Invalid enemy type for " + gameObject.name);
-                break;
+
+    // move by changing pathfinding script's target
+    protected void Move(Vector2 target) {
+        _pathfinding.target = target;
+    }
+
+    protected void Attack() {
+        _pathfinding.SetSpeed(Speed);
+        _pathfinding.target = _player.transform.position;
+        if (_distanceToPlayer < _attackRange) {
+            _pathfinding.target = transform.position;
+            Hit();
         }
     }
-
-    private void Wander() {
-
-    }
-
-    private void Patrol() { 
-        
-    }
-    // move by changing pathfinding script's target
-    private void Move(Vector2 target) {
-        _pathfinding.Target = target;
-    }
-
-    private void Attack() {
-        
-    }
     // hit player
-    private void Hit() {
-
+    protected void Hit() {
+        if (_attackTimer > AttackCooldown) {
+            _player.GetComponent<PlayerHealth>().ReceiveDamage(Damage);
+            _attackTimer = 0;
+        }
     }
     public void ReceiveDamage(float damage) {
         _health -= damage;
         if (_health <= 0)
             Die();
     }
-    private void Die() {
-
+    protected void Die() {
+        Destroy(gameObject);
     }
 }

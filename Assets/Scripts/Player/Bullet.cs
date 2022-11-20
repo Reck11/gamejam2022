@@ -5,8 +5,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] float _bulletSpeed = 10f;
-
-    [SerializeField] GameObject _player;
+    private GameObject _player;
+    private int _damage = 0;
     Vector2 _direction;
 
     void Start()
@@ -14,6 +14,11 @@ public class Bullet : MonoBehaviour
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         Vector3 cannonballVector = transform.right * _bulletSpeed;
         rb.velocity = cannonballVector;
+        _player = GameObject.FindGameObjectWithTag(Tags.PLAYER);
+    }
+
+    public void SetDamage(int damage) {
+        _damage = damage;
     }
 
     private void OnBecameInvisible()
@@ -25,7 +30,8 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(Tags.ENEMY))
         {
-            Destroy(collision.gameObject);
+            var IEnemy = collision.gameObject.GetComponent<IEnemy>();
+            IEnemy.ReceiveDamage(_damage);
             Destroy(gameObject);
         }
     }
