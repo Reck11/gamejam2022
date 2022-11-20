@@ -55,7 +55,7 @@ public class WanderingZombieAI : ZombieAI {
     //wait between minWaitTime and maxWaitTime before moving again
     private IEnumerator Waiter() {
         if (!_shouldWander) // if moving is already inhibited, there is no need to start the couroutine
-            yield break;
+            yield return null;
 
         _shouldWander = false;
         yield return new WaitForSeconds(Random.Range(_minWaitTime, _maxWaitTime));
