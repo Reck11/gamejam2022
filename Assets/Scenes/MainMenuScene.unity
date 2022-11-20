@@ -484,5 +484,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Controls
       objectReference: {fileID: 0}
+    - target: {fileID: 8275573892012593433, guid: a30eb0c134c505947892c76279ed24f8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a30eb0c134c505947892c76279ed24f8, type: 3}
