@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Interectable
   - DropBox
   - DropBoxWide
   - DropBoxTall
@@ -13,7 +14,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - OtherSide
   - Water
   - UI
   - Enemy
