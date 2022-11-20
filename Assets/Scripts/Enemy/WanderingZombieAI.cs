@@ -15,12 +15,22 @@ public class WanderingZombieAI : ZombieAI {
     #endregion
     #region Fields
     private bool _shouldWander;
+    private Animator _animator;
+    private Vector2 _nextTarget;
+    private NavMeshAgent _agent;
+    private float _x;
+    private float _y;
 
     #endregion
 
-    new void Awake() {
-        base.Awake();
+    void Awake() {
+        _state = State.Idle;
+        _health = _maxHealthPoints;
+        _player = GameObject.FindGameObjectWithTag(Tags.PLAYER);
+        _pathfinding = GetComponent<Pathfinding>();
         _shouldWander = true;
+        _animator = GetComponent<Animator>();
+        _agent = _pathfinding.GetComponent<NavMeshAgent>();
     }
 
     void Update() {
@@ -29,6 +39,9 @@ public class WanderingZombieAI : ZombieAI {
             Wander();
         if (_state == State.Attack)
             Attack();
+
+        GetDirection();
+
     }
 
     // slowly pace around general area, randomly picking targets
@@ -49,13 +62,58 @@ public class WanderingZombieAI : ZombieAI {
         }
     }
 
+
     //wait between minWaitTime and maxWaitTime before moving again
     private IEnumerator Waiter() {
         if (!_shouldWander) // if moving is already inhibited, there is no need to start the couroutine
-            yield return null;
+            yield break;
 
         _shouldWander = false;
         yield return new WaitForSeconds(Random.Range(_minWaitTime, _maxWaitTime));
         _shouldWander = true;
     }
+
+    private void GetDirection()
+    {
+        _nextTarget = _agent.steeringTarget;
+
+       
+
+
+
+        if(Mathf.Abs(transform.position.x - _nextTarget.x) > Mathf.Abs(transform.position.y - _nextTarget.y))
+        {
+            _y = 0;
+            if (transform.position.x - _nextTarget.x < 0)
+            {
+                _x = 1;
+            }
+            else
+            {
+                _x = -1;
+            }
+
+        }
+        else
+        {
+            _x = 0;
+            if(transform.position.y - _nextTarget.y < 0)
+            {
+                _y = 1;
+            } 
+            else
+            {
+                _y = -1;
+            }
+
+        }
+
+
+        _animator.SetBool("IsMoving", _pathfinding.hasTarget);
+        _animator.SetFloat("x", _x);
+        _animator.SetFloat("y", _y);
+
+    }
+
+
 }
