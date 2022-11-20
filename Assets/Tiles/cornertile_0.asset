@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Wall
+  m_Name: cornertile_0
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 7482667652216324306, guid: 38e9f6ad4e8c8054689206d0e3841e2f, type: 3}
+  m_Sprite: {fileID: -1053323296, guid: dbcd00faab0082b40b07d268e5a813c5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
