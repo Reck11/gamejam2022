@@ -10,6 +10,7 @@ TagManager:
   - DropBoxWide
   - DropBoxTall
   - DropBoxSquare
+  - Sausage
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - Water
   - UI
   - Enemy
-  - 
-  - 
+  - Player
+  - Bullet
   - 
   - 
   - 
@@ -44,6 +45,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 56214819
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 3107118977
+    locked: 0
+  - name: Task
+    uniqueID: 3878070579
     locked: 0
