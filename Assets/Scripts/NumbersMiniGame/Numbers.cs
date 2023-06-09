@@ -41,10 +41,11 @@ public class Numbers : MonoBehaviour
             OnEnable();
         }
 
-        if (btn == 9 && btn == nextBtn)
+        if (nextBtn == 10)
         {
             station.GetComponent<Task>().EndTask();
             nextBtn = 0;
+            panel.SetActive(false);
         }
     }
 }

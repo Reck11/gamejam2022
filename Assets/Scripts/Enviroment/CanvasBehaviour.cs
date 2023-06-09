@@ -17,7 +17,7 @@ public class CanvasBehaviour : MonoBehaviour
 
     void Update()
     {
-        if(_packageCount >= 7)
+        if(_packageCount >= 5)
         {
             GameEvents.OnPackageEnter -= Count;
             station.GetComponent<Task>().EndTask();
